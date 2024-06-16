@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var channelListApi = ChannelListAPI()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    @Previewable @State var channelListApi = ChannelListAPI()
+//    let mockData = ChannelListResponse(kind: "",
+//                                       etag: "",
+//                                       nextPageToken: nil,
+//                                       prevPageToken: nil,
+//                                       pageInfo: .init(totalResults: 1, resultsPerPage: 1),
+//                                       items: .init(kind: "", etag: "", id: "UCwrVwiJllwhJUKXKmjLcckQ", contentDetails: .init(relatedPlaylists: .init(uploads: "UUwrVwiJllwhJUKXKmjLcckQ"))))
+    ContentView(channelListApi: channelListApi)
 }
