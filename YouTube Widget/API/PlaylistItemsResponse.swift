@@ -12,13 +12,13 @@ struct PlaylistItemsResponse: Codable {
     let prevPageToken: String?
     let items: [Item]
 
-    struct Item: Codable {
+    struct Item: Codable, Hashable {
         let kind: String
         let etag: String
         let id: String
         let contentDetails: ContentDetails
 
-        struct ContentDetails: Codable {
+        struct ContentDetails: Codable, Hashable {
             let videoId: String
             let videoPublishedAt: String
 
